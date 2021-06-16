@@ -6,32 +6,42 @@ using namespace std;
 
 int main()
 {
-    /*
-    {5, 4, 2, 8} costo total 6
-    {6,5,8} costo total 17
-    {11,8} costo total 36
-    {19}
-    */
+    vector<int> myVector = { 4, 4, 2, 4, 1, 2 };
+    int totalCost = 0;
+    int myVectorSize = myVector.size();
 
-    vector<int> myVector = {5, 4, 2, 8};
-
-    for(int i = 0; i < myVector.size(); i++)
+    for (int i = 0; i < (myVectorSize - 1); i++)
     {
-        vector<int>::iterator iterator_smallestElement = myVector.begin() + i;
-        vector<int>::iterator iterator_secondSmallestElement = myVector.begin() + i;
+        cout << "entered for loop" << endl;
+        vector<int>::iterator iterator_smallestElement = myVector.begin();
+        vector<int>::iterator iterator_secondSmallestElement = myVector.begin() +1;
 
-        for(int j = 0; j < myVector.size(); j++)
+        for (int j = 1; j < myVector.size(); j++)
         {
+            cout << "   Entered nested loop" << endl;
             vector<int>::iterator iterator_currentElement = myVector.begin() + j;
-            if(*iterator_currentElement <= *iterator_smallestElement)
+            if (*iterator_currentElement < *iterator_smallestElement)
             {
                 iterator_secondSmallestElement = iterator_smallestElement;
                 iterator_smallestElement = iterator_currentElement;
             }
-            else if(*iterator_currentElement < *iterator_secondSmallestElement)
+            else if (*iterator_currentElement < *iterator_secondSmallestElement)
                 iterator_secondSmallestElement = iterator_currentElement;
         }
+        cout << "   " << *iterator_secondSmallestElement << ", " << *iterator_smallestElement << endl;
+        int unionCost = *iterator_smallestElement + *iterator_secondSmallestElement;
+        totalCost += unionCost;
+        *iterator_smallestElement = unionCost;
+        myVector.erase(iterator_secondSmallestElement);
+        for(auto element: myVector)
+            cout << "   " << element << " ";
+        cout << endl;
+        cout << "exiting for loop" << endl;
     }
+
+    for (auto element : myVector)
+        cout << element << " ";
+    cout << endl << totalCost << endl;
 
     return 0;
 }
