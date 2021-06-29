@@ -81,8 +81,13 @@ public:
         int numberOfNodesToRight = 0;
         if(ptr_nodeToLeft == NULL && ptr_nodeToRight == NULL)
         {
-            cout << "Cannot divide tree into two equally sized trees by removing an edge" << endl;
+            cout << "Cannot divide tree into two equally sized trees by removing an edge 1" << endl;
             return false;
+        }
+        else if(ptr_nodeToLeft != NULL && ptr_nodeToRight != NULL)
+        {
+            numberOfNodesToLeft = ptr_nodeToLeft->numberOfNodes();
+            numberOfNodesToRight = ptr_nodeToRight->numberOfNodes();
         }
         else if(ptr_nodeToLeft == NULL)
         {
@@ -95,12 +100,12 @@ public:
 
         if(numberOfNodesToLeft == numberOfNodesToRight)
         {
-            cout << "Cannot divide tree into two equally sized trees by removing an edge" << endl;
+            cout << "Cannot divide tree into two equally sized trees by removing an edge 2" << endl;
             return false;
         }
         else if(numberOfNodesToLeft == numberOfNodesToRight +1 || numberOfNodesToLeft == numberOfNodesToRight -1)
         {
-            cout << "Can divide tree into two equally sized trees by removing an edge!" << endl;
+            cout << "Can divide tree into two equally sized trees by removing an edge! 3" << endl;
             return true;
         }
         else {
@@ -121,10 +126,16 @@ public:
             }
             while(1==1)
             {
+                cout << endl << "entered while" << endl;
                 if(ptr_biggestSide->ptr_nodeToLeft == NULL && ptr_biggestSide->ptr_nodeToRight == NULL)
                 {
-                    cout << "Cannot divide tree into two equally sized trees by removing an edge" << endl;
+                    cout << "Cannot divide tree into two equally sized trees by removing an edge 4" << endl;
                     return false;
+                }
+                else if(ptr_biggestSide->ptr_nodeToLeft != NULL && ptr_biggestSide->ptr_nodeToRight != NULL)
+                {
+                    numberOfNodesToLeft = ptr_biggestSide->ptr_nodeToLeft->numberOfNodes();
+                    numberOfNodesToRight = ptr_biggestSide->ptr_nodeToRight->numberOfNodes();
                 }
                 else if(ptr_biggestSide->ptr_nodeToLeft == NULL)
                 {
@@ -134,31 +145,36 @@ public:
                     numberOfNodesToLeft = ptr_biggestSide->ptr_nodeToLeft->numberOfNodes();
                     numberOfNodesToRight = 0;
                 }
+                cout << endl << "nodes to left: " << numberOfNodesToLeft << " nodes to right: " << numberOfNodesToRight << endl;
 
                 if(numberOfNodesToLeft < numberOfNodesToRight)
                 {
                     smallestSideSize += numberOfNodesToLeft +1;
-                    biggestSideSize -= numberOfNodesToLeft;
+                    biggestSideSize -= numberOfNodesToLeft +1;
                     ptr_biggestSide = ptr_biggestSide->ptr_nodeToRight;
                 }
                 else if(numberOfNodesToLeft > numberOfNodesToRight)
                 {
+                    cout << endl << "biggestSideSize: " << biggestSideSize << endl;
+                    cout << "numberOfNodesToRight: " << numberOfNodesToRight << endl;
                     smallestSideSize += numberOfNodesToRight +1;
-                    biggestSideSize -= numberOfNodesToRight;
+                    biggestSideSize -= numberOfNodesToRight +1;
                     ptr_biggestSide = ptr_biggestSide->ptr_nodeToLeft;
-                } else {
-                    cout << "Cannot divide tree into two equally sized trees by removing an edge" << endl;
+                }else {
+                    cout << "Cannot divide tree into two equally sized trees by removing an edge 5" << endl;
                     return false;
                 }
 
+                cout << endl << "smallestSideSize: " << smallestSideSize << " biggestSideSize: " << biggestSideSize << endl;
+                cout << endl;
                 if(smallestSideSize > biggestSideSize)
                 {
-                    cout << "Cannot divide tree into two equally sized trees by removing an edge" << endl;
+                    cout << "Cannot divide tree into two equally sized trees by removing an edge 6" << endl;
                     return false;
                 }
                 else if(smallestSideSize == biggestSideSize)
                 {
-                    cout << "Can divide tree into two equally sized trees by removing an edge!" << endl;
+                    cout << "Can divide tree into two equally sized trees by removing an edge! 7" << endl;
                     return true;
                 }
 
@@ -171,10 +187,11 @@ int main()
 {
     BinaryTreeNode root(1);
     BinaryTreeNode leftBranch(1, new BinaryTreeNode(4, new BinaryTreeNode(4), new BinaryTreeNode(4)), new BinaryTreeNode(4));
-    //BinaryTreeNode rightBranch(1, new BinaryTreeNode(5, new BinaryTreeNode(7), new BinaryTreeNode(7, new BinaryTreeNode(7), new BinaryTreeNode(7))), NULL);
+    BinaryTreeNode rightBranch(1, new BinaryTreeNode(5, new BinaryTreeNode(7), new BinaryTreeNode(7, new BinaryTreeNode(7), new BinaryTreeNode(7))), new BinaryTreeNode(7));
     root.setNodeToLeft(&leftBranch);
-    //root.setNodes(&leftBranch, &rightBranch);
-    cout << root.numberOfNodes() << endl;
-    cout << endl;
+    root.setNodes(&leftBranch, &rightBranch);
+    cout << "-----------------------------------------------------------" << endl;
+    cout << "number of nodes: " << root.numberOfNodes() << endl;
+    cout << "-----------------------------------------------------------" << endl;
     cout << root.CanBeDividedIntoTwoEqualSizedTrees() << endl;
 }
