@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1625362820 source:d:\repositorios\exersices\binary-search-tree\main.cpp
+	<iostream>
+	"../Headers/binaryTrees.h"
+
+1625362947 d:\repositorios\exersices\headers\binarytrees.h
+
+1625362937 source:d:\repositorios\exersices\headers\binarytrees.cpp
+	<iostream>
+	"binaryTrees.h"
+
