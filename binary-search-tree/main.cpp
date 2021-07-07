@@ -5,7 +5,11 @@ using namespace std;
 
 int main()
 {
-    BinaryTreeNode myNode(1);
+    BinarySearchTreeRoot myBSTRoot;
+    myBSTRoot.setData(12);
+    myBSTRoot.insertElement(-1);
+
+    cout << myBSTRoot.getNodeToLeft()->getData() << endl;
 
     return 0;
 }

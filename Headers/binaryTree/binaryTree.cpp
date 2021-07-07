@@ -1,5 +1,5 @@
-#include<iostream>
-#include "binaryTrees.h"
+#include <iostream>
+#include "binaryTree.h"
 
 using namespace std;
 
@@ -34,16 +34,16 @@ void BinaryTreeNode::setNodeToRight(BinaryTreeNode* ptr_rightNode)
     ptr_nodeToRight = ptr_rightNode;
     cout << endl << "Set right node" << endl;
 }
-/*
-BinaryTreeNode::getNodeToLeft()
+
+BinaryTreeNode* BinaryTreeNode::getNodeToLeft()
 {
     return ptr_nodeToLeft;
 }
-BinaryTreeNode::getNodeToRight()
+BinaryTreeNode* BinaryTreeNode::getNodeToRight()
 {
     return ptr_nodeToRight;
 }
-*/
+
 void BinaryTreeNode::printData()
 {
     cout << endl << data << endl;
@@ -69,5 +69,3 @@ int BinaryTreeNode::numberOfNodes()
     return countOfNodes +1;
 }
 void BinaryTreeNode::CanBeDividedIntoTwoEqualSizedTrees() {}
-
-
