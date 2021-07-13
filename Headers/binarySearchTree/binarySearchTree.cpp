@@ -36,27 +36,37 @@ void BinarySearchTreeRoot::insertElement(int numberToInsert)
     }
 }
 
-    void BinarySearchTreeRoot::printData()
-    {
-        cout << this->data << endl;
-    }
-    int BinarySearchTreeRoot::sumOfNodes()
-    {
-        int sum = 0;
-        if(this->ptr_nodeToLeft !=NULL)
-            sum += this->ptr_nodeToLeft->sumOfNodes();
+void BinarySearchTreeRoot::printData()
+{
+    cout << this->data << endl;
+}
+int BinarySearchTreeRoot::sumOfNodes()
+{
+    int sum = 0;
+    if(this->ptr_nodeToLeft !=NULL)
+        sum += this->ptr_nodeToLeft->sumOfNodes();
 
-        if(this->ptr_nodeToRight !=NULL)
-            sum += this->ptr_nodeToRight->sumOfNodes();
+    if(this->ptr_nodeToRight !=NULL)
+        sum += this->ptr_nodeToRight->sumOfNodes();
 
-        return sum +this->data;
-    }
-    int BinarySearchTreeRoot::numberOfNodes()
-    {
+    return sum +this->data;
+}
+int BinarySearchTreeRoot::numberOfNodes()
+{
 
-    }
+}
 
-
+void BinarySearchTreeRoot::findElement(int element)
+{
+    if(element == this->data)
+        cout << element << " is an element in this BST" << endl;
+    else if(element < this->data && ptr_nodeToLeft != NULL)
+        ptr_nodeToLeft->findElement(element);
+    else if(element > this->data && ptr_nodeToRight != NULL)
+        ptr_nodeToRight->findElement(element);
+    else
+        cout << element << " is not an element in this BST" << endl;
+}
 
 BinarySearchTreeNode::BinarySearchTreeNode(int number)
     : ptr_nodeToLeft(NULL), ptr_nodeToRight(NULL)

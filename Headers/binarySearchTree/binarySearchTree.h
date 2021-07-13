@@ -21,14 +21,18 @@ public:
     void printData();
     int sumOfNodes();
     int numberOfNodes();
+    void findElement(int element);
     void CanBeDividedIntoTwoEqualSizedTrees();
 };
 
-class BinarySearchTreeNode: public BinarySearchTreeRoot
+class BinarySearchTreeNode: protected BinarySearchTreeRoot
 {
+protected:
     int data;
     BinarySearchTreeNode* ptr_nodeToLeft;
     BinarySearchTreeNode* ptr_nodeToRight;
-public:
+
     BinarySearchTreeNode(int number);
+
+    friend class BinarySearchTreeRoot;
 };
