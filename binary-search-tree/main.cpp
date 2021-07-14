@@ -6,20 +6,26 @@ using namespace std;
 int main()
 {
     BinarySearchTreeRoot myBSTRoot;
-    myBSTRoot.setData(12);
-    myBSTRoot.insertElement(6);
-    myBSTRoot.insertElement(16);
+    myBSTRoot.setData(4);
+    //left side
+    myBSTRoot.insertElement(2);
+    myBSTRoot.insertElement(1);
+    myBSTRoot.insertElement(3);
+    myBSTRoot.insertElement(0);
+    myBSTRoot.insertElement(1);
+    myBSTRoot.insertElement(2);
+    myBSTRoot.insertElement(3);
+    //right side
     myBSTRoot.insertElement(8);
-    myBSTRoot.insertElement(14);
-    myBSTRoot.insertElement(4);
-    myBSTRoot.insertElement(18);
+    myBSTRoot.insertElement(7);
+    myBSTRoot.insertElement(6);
+    myBSTRoot.insertElement(7);
+    myBSTRoot.insertElement(9);
+    myBSTRoot.insertElement(8);
+    myBSTRoot.insertElement(9);
 
-    myBSTRoot.findElement(4);
-    myBSTRoot.findElement(6);
-    myBSTRoot.findElement(16);
-    myBSTRoot.findElement(8);
-    myBSTRoot.findElement(14);
-    myBSTRoot.findElement(18);
+    cout << myBSTRoot.numberOfNodes() << endl;
+    cout << myBSTRoot.numberOfLeyers() << endl;
 
 
 

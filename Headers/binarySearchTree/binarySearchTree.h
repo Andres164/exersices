@@ -22,6 +22,8 @@ public:
     int sumOfNodes();
     int numberOfNodes();
     void findElement(int element);
+    int numberOfLeyers();
+    void printBST();
     void CanBeDividedIntoTwoEqualSizedTrees();
 };
 
